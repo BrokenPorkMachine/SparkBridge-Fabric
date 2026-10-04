@@ -1,0 +1,228 @@
+{
+  "bundle_id": "1f146cea-7eae-4854-aade-04831923af8f",
+  "checks": [
+    {
+      "command": "/usr/local/bin/python3 scripts/certification/check_protocol_matrix.py",
+      "detail": "PASS protocol 1.8 -> 1.8\nPASS protocol 1.9 -> 1.9\nPASS protocol 1.10 -> 1.10\nPASS protocol 1.99 -> 1.10\nPASS protocol 2.0 -> incompatible\nprotocol compatibility matrix passed\n",
+      "evidence": [
+        "scripts/certification/check_protocol_matrix.py"
+      ],
+      "evidence_files": [
+        {
+          "media_type": "text/plain",
+          "name": "evidence/certification-results.local-4e886369d7fc/protocol-matrix.log",
+          "sha256": "5838f88cdae7270444441d43425ca90ae3d20b0e14a615a54bbeea7970413177",
+          "size_bytes": 175
+        }
+      ],
+      "finished_unix_ms": 1791124913940,
+      "id": "compat.protocol-1.10",
+      "runner": "failbr34ks-Mac-mini.local",
+      "started_unix_ms": 1791124913782,
+      "status": "pass"
+    },
+    {
+      "command": "/usr/local/bin/python3 scripts/certification/check_protocol_matrix.py",
+      "detail": "PASS protocol 1.8 -> 1.8\nPASS protocol 1.9 -> 1.9\nPASS protocol 1.10 -> 1.10\nPASS protocol 1.99 -> 1.10\nPASS protocol 2.0 -> incompatible\nprotocol compatibility matrix passed\n",
+      "evidence": [
+        "scripts/certification/check_protocol_matrix.py"
+      ],
+      "evidence_files": [
+        {
+          "media_type": "text/plain",
+          "name": "evidence/certification-results.local-4e886369d7fc/protocol-matrix.log",
+          "sha256": "5838f88cdae7270444441d43425ca90ae3d20b0e14a615a54bbeea7970413177",
+          "size_bytes": 175
+        }
+      ],
+      "finished_unix_ms": 1791124913940,
+      "id": "compat.protocol-1.9",
+      "runner": "failbr34ks-Mac-mini.local",
+      "started_unix_ms": 1791124913782,
+      "status": "pass"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "drill.backup-restore",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "drill.upgrade-rollback",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "e2e.agent-repair",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "e2e.control-plane",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "fault.executor-disconnect",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "fault.ollama-restart",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "fault.server-restart",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "run on DGX Spark",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "rust.linux-aarch64-dgx",
+      "platform": "linux-aarch64",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "run certification CI",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "rust.linux-x86_64",
+      "platform": "linux-x86_64",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": "check + test + clippy",
+      "detail": "\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.17s\n     Running unittests src/main.rs (target/debug/deps/sparkbridge-2eae0afc13d93687)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_agent-d5a6e7dfa5f71df1)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_audit-c96235b7a7a255ce)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_cache-e2e6bd24698a3904)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_candidate-7eeb2785b637b426)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_cas-a471988592f395e2)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_certification-069bb4d765ac7a56)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_config-1b0fe95705468c77)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_core-9b69c06753532c4c)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_diagnostics-8a24baeab290dc3b)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_execution-30b71b7cfaeba47a)\n     Running unittests src/main.rs (target/debug/deps/sparkbridge_executor-a7430ccfad761fb9)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_index-7c7b4c4848868c1d)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_integrations-38324a1dab82fea3)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_maintenance-b03b783ecd085c39)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_policy-0d274c0f5415c37c)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_promotion-6536f54c7cf21790)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_protocol-cb81bd7a63fdd2f3)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_secrets-0605d44ca8de7e93)\n     Running unittests src/main.rs (target/debug/deps/sparkbridge_server-1e480671c941b58b)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_snapshot-fcf675ac9ffe246f)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_task-4d5df01865f65e86)\n     Running unittests src/lib.rs (target/debug/deps/sparkbridge_validation-c6554b5d606bcc4c)\n   Doc-tests sparkbridge_agent\n   Doc-tests sparkbridge_audit\n   Doc-tests sparkbridge_cache\n   Doc-tests sparkbridge_candidate\n   Doc-tests sparkbridge_cas\n   Doc-tests sparkbridge_certification\n   Doc-tests sparkbridge_config\n   Doc-tests sparkbridge_core\n   Doc-tests sparkbridge_diagnostics\n   Doc-tests sparkbridge_execution\n   Doc-tests sparkbridge_index\n   Doc-tests sparkbridge_integrations\n   Doc-tests sparkbridge_maintenance\n   Doc-tests sparkbridge_policy\n   Doc-tests sparkbridge_promotion\n   Doc-tests sparkbridge_protocol\n   Doc-tests sparkbridge_secrets\n   Doc-tests sparkbridge_snapshot\n   Doc-tests sparkbridge_task\n   Doc-tests sparkbridge_validation\n\n$ /Users/failbr34k/.cargo/bin/cargo clippy --workspace --all-targets -- -D warnings\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.77s\n\n",
+      "evidence": [
+        "check + test + clippy"
+      ],
+      "evidence_files": [
+        {
+          "media_type": "text/plain",
+          "name": "evidence/certification-results.local-4e886369d7fc/rust.macos-arm64.log",
+          "sha256": "1c08c99294fd31f05e23f2ae93f94200bf69a51d95a7b24175d14094a74837a0",
+          "size_bytes": 11009
+        }
+      ],
+      "finished_unix_ms": 1791124913778,
+      "id": "rust.macos-arm64",
+      "platform": "macos-arm64",
+      "runner": "failbr34ks-Mac-mini.local",
+      "started_unix_ms": 1791124890454,
+      "status": "pass"
+    },
+    {
+      "command": null,
+      "detail": "run on Windows",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "rust.windows-x86_64",
+      "platform": "windows-x86_64",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "security.audit-chain",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": "python source audit suite",
+      "detail": " required\nPASS: upgrade rollback drill required\nPASS: protocol previous/current required\nPASS: audit chain certification required\nPASS: protocol matrix rejects next major\nPASS: protocol matrix negotiates previous minor\nPASS: certification evaluator blocks skipped required checks\nPASS: certification evaluator checks release identity\nPASS: certification evaluator supports performance thresholds\nPASS: certification profile requires source revision\nPASS: certification profile requires evidence on PASS\nPASS: certification bundle records source revision\nPASS: certification checks support hashed evidence files\nPASS: evaluator rejects evidence-free required PASS\nPASS: evaluator validates evidence digests\nPASS: CLI exposes certification evaluate\nPASS: CLI exposes certification template\nPASS: local result generator exists\nPASS: local result generator pins source revision\nPASS: source revision ignores Python/build/certification output caches\nPASS: source revision ignores OS and editor droppings\nPASS: droppings are gitignored\nPASS: certification evidence logs are not gitignored\nPASS: release inventory ships Cargo.lock\nPASS: local result generator hashes evidence\nPASS: merge rejects mixed source revisions\nPASS: merge rejects conflicting metrics\nPASS: manual check recorder exists\nPASS: release blocker renderer exists\nPASS: protocol fixture checker exists\nPASS: backup restore drill exists\nPASS: update rollback drill exists\nPASS: fault plan is machine readable\nPASS: backup restore has native Rust unit drill\nPASS: signed update has native Rust unit drill\nPASS: CI matrix includes Linux macOS Windows\nPASS: CI uploads certification evidence\nPASS: CI aggregates platform evidence\nPASS: DGX self-hosted certification workflow exists\nPASS: CI retains MSRV lane\nPASS: CI does not gate on cargo fmt\nPASS: results template conforms to the evidence bundle schema\nPASS: platform result template conforms to the evidence bundle schema\nPASS: local result bundle conforms to the evidence bundle schema\nPASS: Linux server installer creates service account\nPASS: Linux uninstallers bundled\nPASS: macOS uninstaller bundled\nPASS: certification guide bundled\nPASS: compatibility guide bundled\nPASS: threat model bundled\nPASS: performance guide bundled\nPASS: manual remains bundled\nPASS: manifest marks manuals bundled\nPASS: rc3 certification tooling self-test exists\nPASS: one-command certification runner exists\nPASS: certification runner assembles portable evidence\nPASS: evidence verifier checks digest and size\nPASS: assembled evidence bundle rewrites portable paths\nPASS: assembled bundle emits evidence manifest\nPASS: blocker renderer checks release identity\nPASS: blocker renderer checks metric thresholds\nPASS: triage renderer gives actionable next steps\nPASS: runner example avoids embedded token values\nPASS: CI assembles and verifies portable evidence\nPASS: DGX workflow runs one-command certification\nPASS: no schema bump for certification\n\nCertification + Hardening audit passed: 78 invariants\n\n",
+      "evidence": [
+        "python source audit suite"
+      ],
+      "evidence_files": [
+        {
+          "media_type": "text/plain",
+          "name": "evidence/certification-results.local-4e886369d7fc/source-audit.log",
+          "sha256": "ae0f57f6d0e3d66203b09502ef6eb35506b6c0486bf44507f5a589809773450b",
+          "size_bytes": 23769
+        }
+      ],
+      "finished_unix_ms": 1791124890453,
+      "id": "source.audit",
+      "runner": "failbr34ks-Mac-mini.local",
+      "started_unix_ms": 1791124887422,
+      "status": "pass"
+    }
+  ],
+  "database_schema": 9,
+  "format_version": 1,
+  "generated_unix_ms": 1791124914103,
+  "metrics": {},
+  "protocol": "1.10",
+  "provenance": {
+    "environment": {},
+    "inputs": [
+      {
+        "name": "inputs/certification-results.local-4e886369d7fc.json",
+        "sha256": "4e886369d7fcd0b96cc3826ff44f38d592b6144fa60c144f0c304283e41f3919",
+        "source_revision": "tree-sha256:b7ed5cbc8687932a36ea99884fb50d7a797ee81f0e205a9bb10eba3ae1913743"
+      }
+    ],
+    "runner": "merge_results.py"
+  },
+  "release": "0.12.0",
+  "source_revision": "tree-sha256:b7ed5cbc8687932a36ea99884fb50d7a797ee81f0e205a9bb10eba3ae1913743"
+}

@@ -1,0 +1,13 @@
+[package]
+name = "sparkbridge-task"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+sparkbridge-protocol = { path = "../sparkbridge-protocol" }
+uuid.workspace = true
+sparkbridge-secrets = { path = "../sparkbridge-secrets" }

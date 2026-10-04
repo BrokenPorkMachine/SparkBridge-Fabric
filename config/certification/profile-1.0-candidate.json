@@ -1,0 +1,37 @@
+{
+  "database_schema": 9,
+  "format_version": 1,
+  "metric_thresholds": [
+    {
+      "maximum": 25.0,
+      "metric": "gateway_local_overhead_p95_ms",
+      "required": false
+    },
+    {
+      "maximum": 100.0,
+      "metric": "control_health_p95_ms",
+      "required": false
+    }
+  ],
+  "protocol": "1.10",
+  "release": "0.12.0",
+  "require_evidence_for_pass": true,
+  "require_source_revision": true,
+  "required_checks": [
+    "source.audit",
+    "rust.linux-x86_64",
+    "rust.linux-aarch64-dgx",
+    "rust.macos-arm64",
+    "rust.windows-x86_64",
+    "e2e.control-plane",
+    "e2e.agent-repair",
+    "fault.server-restart",
+    "fault.executor-disconnect",
+    "fault.ollama-restart",
+    "drill.backup-restore",
+    "drill.upgrade-rollback",
+    "compat.protocol-1.9",
+    "compat.protocol-1.10",
+    "security.audit-chain"
+  ]
+}

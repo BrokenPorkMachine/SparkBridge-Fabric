@@ -1,0 +1,92 @@
+{
+  "objective": "Fix the failing implementation while preserving current behavior and tests.",
+  "workspace_id": "example-project",
+  "base_snapshot_id": "REPLACE_WITH_SNAPSHOT_ID",
+  "model": "qwen3-coder",
+  "context_paths": [
+    "src/main.rs",
+    "tests/integration.rs"
+  ],
+  "acceptance_criteria": [
+    "The project builds successfully",
+    "The configured test suite passes",
+    "No unrelated files are changed"
+  ],
+  "validation_actions": [
+    {
+      "domain": "host",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "relative_cwd": ".",
+      "required_capabilities": [
+        "cargo"
+      ],
+      "timeout_ms": 900000,
+      "max_output_bytes": 1048576,
+      "network_policy": "unrestricted",
+      "cache_trust": "best_effort",
+      "secret_injections": [],
+      "declared_hosts": [],
+      "name": "linux",
+      "platform": "linux",
+      "architecture": null
+    },
+    {
+      "domain": "host",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "relative_cwd": ".",
+      "required_capabilities": [
+        "cargo"
+      ],
+      "timeout_ms": 900000,
+      "max_output_bytes": 1048576,
+      "network_policy": "unrestricted",
+      "cache_trust": "best_effort",
+      "secret_injections": [],
+      "declared_hosts": [],
+      "name": "macos",
+      "platform": "macos",
+      "architecture": null
+    },
+    {
+      "domain": "host",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "relative_cwd": ".",
+      "required_capabilities": [
+        "cargo"
+      ],
+      "timeout_ms": 900000,
+      "max_output_bytes": 1048576,
+      "network_policy": "unrestricted",
+      "cache_trust": "best_effort",
+      "secret_injections": [],
+      "declared_hosts": [],
+      "name": "windows",
+      "platform": "windows",
+      "architecture": null
+    }
+  ],
+  "budgets": {
+    "max_wall_time_ms": 3600000,
+    "max_model_calls": 24,
+    "max_actions": 24,
+    "max_candidates": 10,
+    "max_repair_cycles": 8
+  },
+  "require_candidate": true,
+  "require_validation": true,
+  "principal_id": "local-admin",
+  "data_classification": "private",
+  "validation_fanout": true
+}

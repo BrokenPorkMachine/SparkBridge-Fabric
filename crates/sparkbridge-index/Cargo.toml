@@ -1,0 +1,23 @@
+[package]
+name = "sparkbridge-index"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+regex.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sparkbridge-cas = { path = "../sparkbridge-cas" }
+sparkbridge-snapshot = { path = "../sparkbridge-snapshot" }
+tree-sitter = "0.25.10"
+tree-sitter-rust = "0.24.2"
+tree-sitter-python = "0.25.0"
+tree-sitter-c = "0.24.2"
+tree-sitter-cpp = "0.23.4"
+tree-sitter-javascript = "0.25.0"
+tree-sitter-typescript = "0.23.2"
+tokio.workspace = true
+url.workspace = true

@@ -1,0 +1,22 @@
+[Unit]
+Description=SparkBridge Fabric Control Plane
+After=network.target
+
+[Service]
+Type=simple
+User=sparkbridge
+Group=sparkbridge
+ExecStart=/usr/local/bin/sparkbridge-server --config /etc/sparkbridge/server.toml
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/etc/sparkbridge
+ReadWritePaths=/var/lib/sparkbridge
+StateDirectory=sparkbridge
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

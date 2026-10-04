@@ -1,0 +1,13 @@
+[package]
+name = "sparkbridge-validation"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+sparkbridge-protocol = { path = "../sparkbridge-protocol" }
+
+[dev-dependencies]
+sparkbridge-core = { path = "../sparkbridge-core" }

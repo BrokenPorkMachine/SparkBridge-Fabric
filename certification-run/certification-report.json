@@ -1,0 +1,8 @@
+{
+  "blocker_count": 11,
+  "blockers": "release-blockers.md",
+  "release_ready": false,
+  "results": "bundle/certification-results.json",
+  "source_revision": "tree-sha256:b7ed5cbc8687932a36ea99884fb50d7a797ee81f0e205a9bb10eba3ae1913743",
+  "triage": "triage.md"
+}

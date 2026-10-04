@@ -1,0 +1,72 @@
+[workspace]
+members = [
+    "crates/sparkbridge-core",
+    "crates/sparkbridge-config",
+    "crates/sparkbridge-protocol",
+    "crates/sparkbridge-cas",
+    "crates/sparkbridge-snapshot",
+    "crates/sparkbridge-candidate",
+    "crates/sparkbridge-promotion",
+    "crates/sparkbridge-diagnostics",
+    "crates/sparkbridge-execution",
+    "crates/sparkbridge-task",
+    "crates/sparkbridge-agent",
+    "crates/sparkbridge-index",
+    "crates/sparkbridge-policy",
+    "crates/sparkbridge-secrets",
+    "crates/sparkbridge-audit",
+    "crates/sparkbridge-cache",
+    "crates/sparkbridge-validation",
+    "crates/sparkbridge-integrations",
+    "crates/sparkbridge-maintenance",
+    "crates/sparkbridge-certification",
+    "apps/sparkbridge-server",
+    "apps/sparkbridge-executor",
+    "apps/sparkbridge-cli",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.12.0"
+edition = "2024"
+rust-version = "1.85"
+license = "Apache-2.0"
+authors = ["SparkBridge contributors"]
+
+[workspace.dependencies]
+async-stream = "0.3"
+bytes = "1.9"
+base64 = "0.22"
+futures-util = "0.3"
+anyhow = "1.0"
+axum = { version = "0.8", features = ["json"] }
+axum-server = { version = "0.8", features = ["tls-rustls"] }
+clap = { version = "4.5", features = ["derive", "env"] }
+hex = "0.4"
+ignore = "0.4"
+libc = "0.2"
+regex = "1.11"
+rcgen = { version = "0.14", features = ["pem", "x509-parser"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+rustls = "0.23"
+rustls-pemfile = "2.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+thiserror = "2.0"
+time = "=0.3.36"
+tokio = { version = "1.43", features = ["fs", "io-util", "macros", "rt-multi-thread", "signal", "time", "net", "sync", "process"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+toml = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+uuid = { version = "1.11", features = ["v4", "serde"] }
+url = "2.5"
+zstd = "0.13"
+ed25519-dalek = { version = "2.1", features = ["rand_core"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"

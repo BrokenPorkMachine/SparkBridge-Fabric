@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  workspace:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Structural and release audits
+        run: python scripts/certification/generate_local_results.py
+      - name: Source structure scan
+        run: python scripts/rust_delimiter_scan.py
+      - name: Check
+        run: cargo check --workspace --all-targets
+      - name: Test
+        run: cargo test --workspace
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: certification-${{ matrix.os }}
+          path: |
+            certification-results.local.json
+            certification-evidence/
+
+  msrv:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.85.0
+      - name: Minimum supported Rust
+        run: cargo check --workspace --all-targets
+
+  certification-aggregate:
+    needs: workspace
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: certification-*
+          path: certification-inputs
+      - name: Assemble and verify same-revision platform evidence
+        shell: bash
+        run: |
+          mapfile -t files < <(find certification-inputs -name certification-results.local.json -type f | sort)
+          test "${#files[@]}" -eq 3
+          python scripts/certification/assemble_evidence_bundle.py \
+            --output-dir certification-ci-bundle "${files[@]}"
+      - name: Render blockers and triage
+        shell: bash
+        run: |
+          python scripts/certification/release_blockers.py \
+            --results certification-ci-bundle/certification-results.json > release-blockers.ci.md
+          python scripts/certification/triage_results.py \
+            --results certification-ci-bundle/certification-results.json > certification-triage.ci.md
+          python scripts/certification/verify_evidence_bundle.py \
+            --results certification-ci-bundle/certification-results.json \
+            --root certification-ci-bundle
+      - uses: actions/upload-artifact@v4
+        with:
+          name: certification-aggregate
+          path: |
+            certification-ci-bundle/
+            release-blockers.ci.md
+            certification-triage.ci.md

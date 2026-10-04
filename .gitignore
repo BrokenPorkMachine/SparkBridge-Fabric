@@ -1,0 +1,28 @@
+/target/
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+.env
+.env.*
+*.log
+# Certification evidence is release content, not build noise: the result bundles reference
+# these logs by SHA-256 and `scripts/certification/verify_evidence_bundle.py` verifies them,
+# so they must stay tracked. They are excluded from `source_revision()` by path, not by
+# being absent from the repository.
+!certification-evidence/*.log
+!certification-run/bundle/evidence/**/*.log
+sparkbridge-data/
+__pycache__/
+*.pyc
+*.pyo
+
+# SparkBridge runtime identity/state
+/pki/
+/state/
+*.pem
+*.key
+*.db
+*.db-shm
+*.db-wal

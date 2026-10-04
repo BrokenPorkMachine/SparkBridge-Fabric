@@ -1,0 +1,34 @@
+[package]
+name = "sparkbridge"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+base64.workspace = true
+futures-util.workspace = true
+serde.workspace = true
+uuid.workspace = true
+anyhow.workspace = true
+clap.workspace = true
+rcgen.workspace = true
+reqwest.workspace = true
+hex.workspace = true
+sha2.workspace = true
+serde_json.workspace = true
+sparkbridge-core = { path = "../../crates/sparkbridge-core" }
+sparkbridge-cas = { path = "../../crates/sparkbridge-cas" }
+sparkbridge-snapshot = { path = "../../crates/sparkbridge-snapshot" }
+sparkbridge-index = { path = "../../crates/sparkbridge-index" }
+sparkbridge-protocol = { path = "../../crates/sparkbridge-protocol" }
+time.workspace = true
+tokio.workspace = true
+
+sparkbridge-task = { path = "../../crates/sparkbridge-task" }
+
+sparkbridge-cache = { path = "../../crates/sparkbridge-cache" }
+
+sparkbridge-maintenance = { path = "../../crates/sparkbridge-maintenance" }
+
+sparkbridge-certification = { path = "../../crates/sparkbridge-certification" }

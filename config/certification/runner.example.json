@@ -1,0 +1,20 @@
+{
+  "description": "Operator notes for a same-revision certification run. Tokens are supplied through environment variables, never this file.",
+  "expected_revision": "tree-sha256:<fill-after-unpacking>",
+  "platform_inputs": [
+    "linux-x86_64.json",
+    "dgx-aarch64.json",
+    "macos-arm64.json",
+    "windows-x86_64.json"
+  ],
+  "required_manual_scenarios": [
+    "e2e.control-plane",
+    "e2e.agent-repair",
+    "fault.server-restart",
+    "fault.executor-disconnect",
+    "fault.ollama-restart",
+    "drill.backup-restore",
+    "drill.upgrade-rollback",
+    "security.audit-chain"
+  ]
+}

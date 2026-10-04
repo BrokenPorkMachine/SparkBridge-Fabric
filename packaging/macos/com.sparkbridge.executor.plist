@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.sparkbridge.executor</string>
+  <key>ProgramArguments</key><array><string>/usr/local/bin/sparkbridge-executor</string><string>--config</string><string>/Library/Application Support/SparkBridge/executor.toml</string></array>
+  <key>RunAtLoad</key><true/><key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/Library/Logs/SparkBridge/executor.log</string>
+  <key>StandardErrorPath</key><string>/Library/Logs/SparkBridge/executor-error.log</string>
+  <key>ProcessType</key><string>Background</string>
+</dict></plist>

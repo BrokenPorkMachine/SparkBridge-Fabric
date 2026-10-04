@@ -1,0 +1,60 @@
+# The enrollment listener presents a server certificate issued by ca.pem.
+enrollment_url = "https://dgx-spark.example.lan:7788"
+# Optional override. If omitted, enrollment returns the fabric URL.
+# fabric_url = "https://dgx-spark.example.lan:7789"
+
+# Copy the CA certificate from the DGX over a trusted channel before enrollment.
+ca_cert_path = "./pki/ca.pem"
+identity_dir = "./state/executor-identity"
+
+# Prefer SPARKBRIDGE_ENROLLMENT_TOKEN rather than storing this in a file.
+# enrollment_token = "one-time-token"
+# name = "windows-workstation"
+
+heartbeat_seconds = 10
+reconnect_initial_seconds = 1
+reconnect_max_seconds = 60
+
+# Snapshot requests are confined to these roots.
+workspace_roots = ["."]
+local_cas_path = "./state/executor-cas"
+snapshot_max_retries = 3
+snapshot_max_file_bytes = 134217728
+
+# Logical workspace IDs used by remote actions. The DGX schedules by these IDs,
+# never by workstation-specific absolute paths.
+workspace_bindings = { example = "." }
+
+# v0.6 remote-action worker. One action at a time is leased by this executor.
+action_poll_seconds = 2
+action_lease_renew_seconds = 10
+action_outbox_path = "./state/action-outbox"
+action_sandbox_path = "./state/action-sandboxes"
+action_allowed_env = ["CI", "RUST_BACKTRACE", "RUST_LOG"]
+
+# v0.11 secret broker. Keys are opaque references seen by SparkBridge; values are
+# local environment-variable NAMES. Secret VALUES remain only in the executor's
+# process environment and are injected at spawn time after policy approval.
+secret_env_bindings = { github-token = "SPARKBRIDGE_SECRET_GITHUB_TOKEN" }
+
+# Linux-only enforceable network=none uses bubblewrap (`bwrap --unshare-net`).
+# Other restricted network modes remain rejected until platform/domain-specific
+# enforcement exists. Set false to disable even this Linux isolation path.
+action_allow_linux_network_none = true
+
+action_allowed_commands = [
+  "git", "cargo", "rustc", "cmake", "ninja", "clang", "clang++", "gcc", "g++",
+  "python3", "python", "node", "npm", "dotnet", "java", "swift", "xcodebuild", "msbuild"
+]
+log_filter = "sparkbridge_executor=info"
+
+# v0.8 optional native language-intelligence overlay. Tree-sitter indexing on
+# the DGX is the portable baseline; these LSPs can refine document symbols.
+intelligence_native_max_files = 256
+intelligence_native_file_max_bytes = 1048576
+
+[intelligence_lsp_commands]
+rust = ["rust-analyzer"]
+c_cpp = ["clangd"]
+swift = ["sourcekit-lsp"]
+csharp = ["Microsoft.CodeAnalysis.LanguageServer"]

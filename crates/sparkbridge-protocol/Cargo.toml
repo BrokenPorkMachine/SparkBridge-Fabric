@@ -1,0 +1,12 @@
+[package]
+name = "sparkbridge-protocol"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+serde_json.workspace = true
+serde.workspace = true
+sparkbridge-core = { path = "../sparkbridge-core" }
+sparkbridge-diagnostics = { path = "../sparkbridge-diagnostics" }

@@ -1,0 +1,570 @@
+===== validate_structure.py =====
+structure OK: 23 workspace packages
+
+===== rust_delimiter_scan.py =====
+Rust delimiter/source scan passed: 39 files
+
+===== audit_secure.py =====
+PASS: workspace version is 0.12.0
+PASS: protocol minor advanced to 1.10
+PASS: admin bind defaults to loopback
+PASS: server rejects remote admin
+PASS: fabric uses WebPkiClientVerifier
+PASS: fabric uses client certificate verifier
+PASS: enrollment token is hashed
+PASS: one-time token is transactionally consumed
+PASS: executor generates local key
+PASS: executor sends CSR
+PASS: server overwrites CSR policy
+PASS: client cert restricted to ClientAuth
+PASS: executor uses mTLS identity
+PASS: executor pins CA
+PASS: node request has bearer binding
+PASS: revocation is durable
+PASS: rotation creates credential grace
+PASS: identity activation is generation based
+PASS: reconnect is exponential
+PASS: feature negotiation implemented
+PASS: body limit exists
+PASS: public trust roots are disabled
+PASS: executor validates configuration
+PASS: server validates configuration
+PASS: fatal auth failures stop reconnecting
+PASS: identity pointer is private
+PASS: old identity generations are pruned
+PASS: SQLite schema is explicitly versioned
+
+Secure Fabric audit passed: 28 invariants
+
+===== audit_inference.py =====
+PASS: workspace version is 0.12.0
+PASS: protocol minor is 1.10
+PASS: Ollama URL is loopback validated
+PASS: gateway has independent TLS listener
+PASS: gateway authentication is bearer based
+PASS: gateway digest comparison is constant time
+PASS: PKI bootstrap creates gateway token
+PASS: gateway token rotation exists
+PASS: provider abstraction exists
+PASS: iteration 3 gateway features negotiate
+PASS: server advertises iteration 3
+PASS: pooled localhost client exists
+PASS: generate streaming exists
+PASS: chat streaming exists
+PASS: gateway forces streaming
+PASS: anti-buffering response headers exist
+PASS: bounded concurrency exists
+PASS: queue timeout exists
+PASS: stream idle timeout exists
+PASS: keep alive is centrally injected
+PASS: model allowlist exists
+PASS: model list endpoint exists
+PASS: running models endpoint exists
+PASS: model load/unload exists
+PASS: residency changes are exclusive
+PASS: request cancellation exists
+PASS: request IDs are returned
+PASS: RAII request cleanup exists
+PASS: queue cleanup is RAII
+PASS: Ollama final metrics are parsed
+PASS: gateway timing telemetry exists
+PASS: prompt/decode token rates are computed
+PASS: telemetry excludes prompt content
+PASS: request body limit is configurable
+PASS: CLI can stream chat/generate
+PASS: CLI supports cancellation
+PASS: example config keeps Ollama local
+
+Inference Gateway audit passed: 37 invariants
+
+===== audit_snapshots.py =====
+PASS: workspace version 0.12.0
+PASS: protocol is 1.10
+PASS: CAS and snapshot crates are workspace members
+PASS: SHA-256 CAS addressing
+PASS: CAS verifies claimed digest
+PASS: CAS writes use temporary file + fsync + rename
+PASS: CAS object reads verify stored digest
+PASS: CAS fsck primitive exists
+PASS: snapshot performs before/after stability scan
+PASS: snapshot retries busy workspaces
+PASS: Git state is stable across scan
+PASS: Git inspection is read-only
+PASS: custom sparkbridge ignore exists
+PASS: symlinks are recorded without following
+PASS: non UTF-8 logical paths are rejected
+PASS: Windows reserved names are rejected
+PASS: case collisions are rejected
+PASS: snapshot file-size bound exists
+PASS: workspace roots confine snapshot source
+PASS: missing-object negotiation exists
+PASS: incremental upload asks for only missing digests
+PASS: zstd CAS transfer exists
+PASS: CAS endpoint remains on mTLS fabric
+PASS: snapshot registration requires authenticated node
+PASS: snapshot registration requires manifest in CAS
+PASS: snapshot registration verifies referenced objects
+PASS: snapshot registry is durable SQLite
+PASS: schema migrated through v8
+PASS: executor explicit snapshot command exists
+PASS: admin snapshot listing exists
+PASS: workspace feature negotiation exists
+
+CAS + Snapshot audit passed: 31 invariants
+
+===== audit_candidates.py =====
+PASS: workspace version 0.12.0
+PASS: protocol is 1.10
+PASS: candidate and promotion crates are workspace members
+PASS: candidate feature negotiation exists
+PASS: candidate operations are structured
+PASS: candidate modifications bind expected base digests
+PASS: candidate replacement data is content addressed
+PASS: candidate manifest is immutable CAS object
+PASS: candidate paths reject traversal
+PASS: candidate paths reject case double-touch
+PASS: candidate creation is loopback admin surface
+PASS: candidate inline contents enter CAS before manifest
+PASS: candidate validates against immutable base snapshot
+PASS: candidate registry is durable SQLite
+PASS: schema is v9 with additive migration
+PASS: executor explicit promote command exists
+PASS: executor supports dry-run promotion
+PASS: candidate retrieval is mTLS and workspace bound
+PASS: promotion fetches candidate and base from CAS
+PASS: three-way merge exists
+PASS: merge only auto-resolves disjoint changes
+PASS: promotion precommit re-snapshots live workspace
+PASS: workspace generation head is monotonic
+PASS: snapshot registration now uses workspace generation
+PASS: promotion uses exclusive workspace lock
+PASS: crash recovery runs after lock acquisition
+PASS: dry-run promotion does not mutate the live workspace
+PASS: promotion journals before applying
+PASS: promotion backs up every touched path
+PASS: failed promotion rolls back
+PASS: last-moment digest checks protect user edits
+PASS: promotion rejects symlink ancestors
+PASS: writes use temporary file and rename
+PASS: promotion reports applied/conflict/dry-run/failed
+PASS: promotion reports are authenticated and workspace-bound
+PASS: reported result manifest must exist in DGX CAS
+PASS: promotion registry is durable SQLite
+PASS: admin can list candidate and promotion records
+PASS: CLI patch files reference local content files
+PASS: snapshot excludes SparkBridge transaction metadata
+PASS: promotion crate does not execute remote commands
+
+Candidate + Promotion audit passed: 41 invariants
+
+===== audit_actions.py =====
+PASS: workspace version 0.12.0
+PASS: protocol is 1.10
+PASS: schema is v9
+PASS: execution and diagnostics crates are members
+PASS: remote action features negotiate
+PASS: actions use structured argv
+PASS: executable paths are rejected
+PASS: executor command allowlist exists
+PASS: workspace is logical and executor bound
+PASS: relative cwd cannot escape workspace
+PASS: capability report is durable
+PASS: scheduler matches workspace/domain/platform/arch/tools
+PASS: scheduler requires online nodes
+PASS: leases are durable
+PASS: server enforces one active action per executor
+PASS: pure expired leases requeue only
+PASS: lease renewal carries cancellation
+PASS: executor cancels on server request
+PASS: action time is bounded
+PASS: action output is bounded
+PASS: process tree termination has platform handling
+PASS: diagnostics normalize unix and MSVC formats
+PASS: completion results contain diagnostics
+PASS: result outbox is durable
+PASS: action completion endpoint is authenticated
+PASS: admin can create/list/show/cancel actions
+PASS: restricted network policy is truthful
+PASS: action records persist in SQLite
+
+Remote Actions audit passed: 28 invariants
+
+===== audit_agent.py =====
+PASS: workspace version 0.12.0
+PASS: protocol is 1.10
+PASS: schema is v9
+PASS: task and agent crates are workspace members
+PASS: iteration 7 features negotiate
+PASS: TaskSpec has objective/workspace/base/model
+PASS: task budgets cover wall/model/action/candidate/repair
+PASS: task status is explicit
+PASS: task counters are durable
+PASS: task events are immutable typed objects
+PASS: events persist with sequence uniqueness
+PASS: task projection is persisted
+PASS: task events carry replayable projections
+PASS: task/event projection writes are transactional
+PASS: server recovers tasks on startup
+PASS: orphaned task actions can be reattached
+PASS: one runtime loop per task is serialized
+PASS: context bundles are content addressed
+PASS: context has bounded total and file sizes
+PASS: explicit source context remains first priority
+PASS: diagnostic source files join repair context
+PASS: diagnostic paths normalize to workspace relative
+PASS: agent output is structured JSON directives
+PASS: model cannot invent validation commands
+PASS: model call is durable before inference
+PASS: invalid model directives pause task
+PASS: inference failure pauses instead of losing task
+PASS: candidate rejection feeds repair evidence
+PASS: candidate delta remains anchored to base snapshot
+PASS: candidate validation actions are pure
+PASS: candidate validation actions carry candidate ID
+PASS: executor reconstructs candidate sandbox from CAS
+PASS: candidate sandbox is disposable
+PASS: stale candidate sandboxes are cleaned at startup
+PASS: candidate validation is workspace-bound and cross-node safe
+PASS: sandbox symlinks cannot escape workspace
+PASS: Windows symlink limitation is explicit
+PASS: validation result feeds deterministic repair cycle
+PASS: multiple validation actions advance in order
+PASS: completion can require candidate and validation
+PASS: task pause/resume/cancel APIs exist
+PASS: task CLI supports lifecycle
+PASS: follow mode polls durable task loop
+PASS: task cancellation propagates to pending action
+PASS: agent actions remain under executor allowlist
+PASS: agent does not auto-promote candidates
+
+Deterministic Agent Runtime audit passed: 46 invariants
+
+===== audit_intelligence.py =====
+PASS: workspace version 0.12.0
+PASS: protocol is 1.10
+PASS: schema is v9
+PASS: repository index crate is workspace member
+PASS: tree-sitter runtime is pinned for MSRV
+PASS: major portable grammars are present
+PASS: index is snapshot keyed
+PASS: index stores files symbols references
+PASS: index has explicit truncation evidence
+PASS: index budgets exist
+PASS: tree-sitter covers Rust/Python/C/C++/JS/TS
+PASS: Swift remains portable through structural fallback
+PASS: exact lexical search exists
+PASS: symbol search exists
+PASS: reference search exists
+PASS: ranked path selection exists
+PASS: Git history is captured in snapshot
+PASS: Git history read path is exposed
+PASS: repository indexes persist durably
+PASS: index body lives in CAS
+PASS: server lazily ensures index
+PASS: admin intelligence routes exist
+PASS: CLI exposes intelligence lifecycle
+PASS: context bundle can carry intelligence
+PASS: manual context remains highest priority
+PASS: candidate paths outrank discovered paths
+PASS: diagnostic files outrank discovered paths
+PASS: context compiler invokes repository intelligence
+PASS: context bundles version intelligence format
+PASS: iteration 8 features negotiate
+PASS: server negotiates intelligence features
+PASS: native report is snapshot/workspace bound
+PASS: native report paths must exist in immutable snapshot
+PASS: native reports persist through CAS
+PASS: native LSP collection is bounded
+PASS: native LSP commands are configurable
+PASS: native adapters include SourceKit rust-analyzer clangd Roslyn
+PASS: native collection uses stdio JSON-RPC
+PASS: executor advertises native adapters
+PASS: executor supports explicit native intelligence upload
+PASS: native upload stays on mTLS fabric
+PASS: server exposes authenticated native upload route
+PASS: native symbols can influence context ranking
+PASS: language counts are context evidence
+PASS: index stats are context evidence
+PASS: agent still cannot auto-promote
+PASS: executor native pass is optional
+
+Repository Intelligence audit passed: 47 invariants
+
+===== audit_policy.py =====
+PASS: workspace version 0.12.0
+PASS: protocol is 1.10
+PASS: schema is v9
+PASS: policy/secrets/audit crates are workspace members
+PASS: iteration 9 features negotiate
+PASS: data classification enum exists
+PASS: provider boundary enum exists
+PASS: permissions include policy/secrets
+PASS: principal records are durable protocol objects
+PASS: workspace policy has ACL secret allowlist approval list
+PASS: policy decisions are allow ask deny
+PASS: action has awaiting approval status
+PASS: approval records expire
+PASS: principals workspace policies approvals audit persist in SQLite
+PASS: local admin is seeded
+PASS: empty ACL is not public
+PASS: disabled principal denies
+PASS: workspace approval requirements are honored
+PASS: secret use needs permission
+PASS: secret refs must be explicitly workspace allowed
+PASS: secret-bearing actions require approval
+PASS: side effect actions require approval
+PASS: confidential unrestricted network escalates to ask
+PASS: task creation checks candidate permission
+PASS: task runtime reauthorizes read each turn
+PASS: classification boundary checked at task create
+PASS: classification boundary rechecked before inference
+PASS: server config exposes boundary and scan controls
+PASS: workspace classification defaults are configurable
+PASS: secret injection protocol contains reference only
+PASS: action spec carries secret refs and declared hosts
+PASS: task validation actions can carry secret refs
+PASS: executor maps references to local env names
+PASS: executor advertises secret reference capability
+PASS: executor does not transmit local secret values
+PASS: known injected values are scrubbed
+PASS: generic process output secret scanner runs
+PASS: context secret scanner redacts before model
+PASS: candidate secret scanner rejects model output
+PASS: model prompt forbids secret reconstruction
+PASS: secret scanner recognizes multiple common shapes
+PASS: Linux network-none capability is conditional
+PASS: Linux network none uses unshare-net
+PASS: unenforceable restricted modes are rejected
+PASS: actions are centrally policy evaluated
+PASS: secret capability required for scheduling
+PASS: approval endpoint requires approve permission
+PASS: live promotion authorization endpoint exists
+PASS: live promotion always needs explicit approval
+PASS: promotion approval is candidate/workspace/principal bound
+PASS: audit envelope chains previous hashes
+PASS: audit store verifies chain
+PASS: CLI exposes policy approvals audit
+PASS: policy admin routes remain admin surface
+PASS: manual and install guide preserve current release identity
+PASS: policy guide documents secret values stay executor local
+PASS: security model includes v0.9 amendments
+PASS: README carries forward v0.9 policy layer
+
+Policy + Secrets audit passed: 58 invariants
+
+===== audit_cache_validation.py =====
+PASS: workspace version is 0.12.0
+PASS: protocol is 1.10
+PASS: schema is v9
+PASS: cache and validation crates are workspace members
+PASS: iteration 10 features negotiate
+PASS: server advertises iteration 10
+PASS: cache trust has strong best-effort disabled
+PASS: actions can target platform and architecture
+PASS: action records expose cache provenance
+PASS: cached actions require immutable candidates
+PASS: only pure actions may be cached
+PASS: secret dependent actions are not cached
+PASS: strong cache requires network none
+PASS: strong cache scheduling requires hermetic domain capability
+PASS: native host domain does not overclaim strong cache
+PASS: strong cache requires toolchain fingerprint
+PASS: strong cache rejects unknown required tool versions
+PASS: cache key includes candidate
+PASS: cache key includes platform and architecture
+PASS: cache key includes argv cwd environment
+PASS: cache key includes timeout and output bounds
+PASS: cache key includes network intent
+PASS: cache key includes required capabilities
+PASS: cache key includes toolchain digest
+PASS: toolchain fingerprint contains platform architecture domain executor
+PASS: toolchain fingerprint records command versions
+PASS: toolchain fingerprint records selected environment
+PASS: toolchain fingerprint digest is content addressed
+PASS: execution domains report toolchain fingerprint
+PASS: action cache is durable sqlite
+PASS: cache has bounded LRU-style pruning
+PASS: successful cacheable results are stored in CAS
+PASS: cached CAS object self-binds cache key and toolchain
+PASS: strong cache reuse reloads immutable CAS result
+PASS: strong hit alone can skip execution
+PASS: best effort hit does not become authoritative skip
+PASS: scheduler uses cache affinity
+PASS: scheduler matches target platform and architecture
+PASS: validation protocol has matrices and targets
+PASS: validation targets carry platform architecture cache trust
+PASS: validation run status requires aggregate target state
+PASS: validation runs persist durably
+PASS: validation admin routes exist
+PASS: validation matrix target count is bounded
+PASS: validation scheduling binds candidate workspace
+PASS: validation creation schedules candidate-bound actions
+PASS: cross-node candidate validation requires same workspace
+PASS: promotion remains owner pinned
+PASS: task spec supports fanout
+PASS: task projection supports multiple pending actions
+PASS: agent runtime schedules validation fanout
+PASS: agent waits for all fanout actions
+PASS: agent validation produces durable validation run evidence
+PASS: fanout failure returns to repair cycle
+PASS: agent validation actions carry target platform
+PASS: agent validation actions carry cache trust
+PASS: workspace policy can require validation platforms
+PASS: live promotion enforces required platforms
+PASS: dry-run promotion does not require validation matrix
+PASS: CLI exposes cache workflow
+PASS: CLI exposes validation workflow
+PASS: CLI action creation supports cache and target platform
+PASS: example validation matrix exists
+PASS: workspace policy example requires platform matrix
+PASS: manuals retain cache and validation guidance
+PASS: security model documents v0.11 cache boundary
+PASS: README preserves cache/validation guarantees
+PASS: agent still does not auto-promote
+
+Action Cache + Multi-Platform Validation audit passed: 68 invariants
+
+===== audit_integrations.py =====
+PASS: workspace version 0.12.0
+PASS: protocol is 1.10
+PASS: schema marker is 9
+PASS: integration and maintenance crates are workspace members
+PASS: iteration 11 feature set exists
+PASS: server advertises iteration 11
+PASS: integration listener has separate bind
+PASS: integration listener requires https public URL
+PASS: integration token path is separate
+PASS: PKI init creates integration token
+PASS: integration auth hashes bearer token
+PASS: integration listener uses TLS
+PASS: integration principal is seeded
+PASS: integration principal omits promotion authority
+PASS: task creation rewrites client principal
+PASS: integration task visibility is principal bound
+PASS: MCP intelligence checks workspace read ACL
+PASS: MCP modern discovery exists
+PASS: MCP modern revision is 2026-07-28
+PASS: MCP legacy initialize exists
+PASS: MCP tools list/call exist
+PASS: MCP exposes durable task tools
+PASS: MCP task execution uses per-task runtime lock
+PASS: MCP exposes repository search tools
+PASS: MCP calls are audited
+PASS: IDE integration task API exists
+PASS: integration summary exists
+PASS: OpenAI models endpoint exists
+PASS: OpenAI chat endpoint exists
+PASS: OpenAI integration stays in inference admission path
+PASS: Ollama compatibility routes exist
+PASS: compatibility routes use SparkBridge inference object
+PASS: dashboard exists
+PASS: dashboard does not embed integration token
+PASS: integration token CLI rotation exists
+PASS: integration status CLI exists
+PASS: backup crate records per-file sha256
+PASS: backup preserves Unix file mode where available
+PASS: backup refuses symlink input
+PASS: restore does not overwrite by default
+PASS: backup CLI exists
+PASS: signed update uses Ed25519
+PASS: update validates artifact digest and size
+PASS: staged update does not auto-install
+PASS: update CLI exists
+PASS: CAS GC defaults dry-run
+PASS: CAS GC has age grace period
+PASS: CAS GC recursively follows JSON digest references
+PASS: Linux installers are packaged
+PASS: macOS LaunchDaemon is packaged
+PASS: Windows service installer is packaged
+PASS: manuals are bundled and current
+PASS: external integration guide is bundled
+PASS: maintenance guide is bundled
+PASS: security model separates integration trust surface
+PASS: security model forbids external promotion shortcut
+PASS: README preserves integration/production layer
+PASS: no automatic promotion remains documented
+
+External Integrations + Production Polish audit passed: 58 invariants
+
+===== audit_certification.py =====
+PASS: workspace version is 0.12.0
+PASS: protocol intentionally frozen at 1.10
+PASS: certification crate is workspace member
+PASS: release certification feature exists
+PASS: server advertises certification feature
+PASS: certification profile release matches
+PASS: certification profile protocol frozen
+PASS: certification profile schema frozen
+PASS: four native Rust targets required
+PASS: control-plane E2E required
+PASS: agent repair E2E required
+PASS: three main fault drills required
+PASS: backup restore drill required
+PASS: upgrade rollback drill required
+PASS: protocol previous/current required
+PASS: audit chain certification required
+PASS: protocol matrix rejects next major
+PASS: protocol matrix negotiates previous minor
+PASS: certification evaluator blocks skipped required checks
+PASS: certification evaluator checks release identity
+PASS: certification evaluator supports performance thresholds
+PASS: certification profile requires source revision
+PASS: certification profile requires evidence on PASS
+PASS: certification bundle records source revision
+PASS: certification checks support hashed evidence files
+PASS: evaluator rejects evidence-free required PASS
+PASS: evaluator validates evidence digests
+PASS: CLI exposes certification evaluate
+PASS: CLI exposes certification template
+PASS: local result generator exists
+PASS: local result generator pins source revision
+PASS: source revision ignores Python/build/certification output caches
+PASS: source revision ignores OS and editor droppings
+PASS: droppings are gitignored
+PASS: certification evidence logs are not gitignored
+PASS: release inventory ships Cargo.lock
+PASS: local result generator hashes evidence
+PASS: merge rejects mixed source revisions
+PASS: merge rejects conflicting metrics
+PASS: manual check recorder exists
+PASS: release blocker renderer exists
+PASS: protocol fixture checker exists
+PASS: backup restore drill exists
+PASS: update rollback drill exists
+PASS: fault plan is machine readable
+PASS: backup restore has native Rust unit drill
+PASS: signed update has native Rust unit drill
+PASS: CI matrix includes Linux macOS Windows
+PASS: CI uploads certification evidence
+PASS: CI aggregates platform evidence
+PASS: DGX self-hosted certification workflow exists
+PASS: CI retains MSRV lane
+PASS: CI does not gate on cargo fmt
+PASS: results template conforms to the evidence bundle schema
+PASS: platform result template conforms to the evidence bundle schema
+PASS: local result bundle conforms to the evidence bundle schema
+PASS: Linux server installer creates service account
+PASS: Linux uninstallers bundled
+PASS: macOS uninstaller bundled
+PASS: certification guide bundled
+PASS: compatibility guide bundled
+PASS: threat model bundled
+PASS: performance guide bundled
+PASS: manual remains bundled
+PASS: manifest marks manuals bundled
+PASS: rc3 certification tooling self-test exists
+PASS: one-command certification runner exists
+PASS: certification runner assembles portable evidence
+PASS: evidence verifier checks digest and size
+PASS: assembled evidence bundle rewrites portable paths
+PASS: assembled bundle emits evidence manifest
+PASS: blocker renderer checks release identity
+PASS: blocker renderer checks metric thresholds
+PASS: triage renderer gives actionable next steps
+PASS: runner example avoids embedded token values
+PASS: CI assembles and verifies portable evidence
+PASS: DGX workflow runs one-command certification
+PASS: no schema bump for certification
+
+Certification + Hardening audit passed: 78 invariants
+

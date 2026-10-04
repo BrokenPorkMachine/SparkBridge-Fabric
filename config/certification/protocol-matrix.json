@@ -1,0 +1,10 @@
+{
+  "server_protocol": "1.10",
+  "cases": [
+    {"client":"1.8","compatible":true,"negotiated":"1.8"},
+    {"client":"1.9","compatible":true,"negotiated":"1.9"},
+    {"client":"1.10","compatible":true,"negotiated":"1.10"},
+    {"client":"1.99","compatible":true,"negotiated":"1.10"},
+    {"client":"2.0","compatible":false,"negotiated":null}
+  ]
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=SparkBridge Fabric Secure Executor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/sparkbridge-executor --config /etc/sparkbridge/executor.toml
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+{
+  "format_version": 1,
+  "scenarios": [
+    {"id":"fault.server-restart","inject":"SIGTERM server between durable task steps","expected":"task resumes from persisted state without duplicate directive"},
+    {"id":"fault.executor-disconnect","inject":"drop executor network during leased pure action","expected":"lease expires and pure action may requeue; side-effecting action becomes lost"},
+    {"id":"fault.ollama-restart","inject":"restart Ollama during inference stream","expected":"request fails, durable task state remains resumable"},
+    {"id":"fault.cas-partial-write","inject":"interrupt CAS temp write","expected":"no object becomes visible until digest verified and atomic rename completes"},
+    {"id":"fault.promotion-crash","inject":"terminate executor during applying promotion","expected":"journal-driven rollback/recovery after promotion lock acquisition"}
+  ]
+}

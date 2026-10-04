@@ -1,0 +1,70 @@
+{
+  "principal_id": "local-admin",
+  "workspace_id": "example-project",
+  "candidate_id": "REPLACE_WITH_CANDIDATE_ID",
+  "targets": [
+    {
+      "name": "linux-cargo",
+      "platform": "linux",
+      "architecture": null,
+      "domain": "host",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "relative_cwd": ".",
+      "required_capabilities": [
+        "cargo"
+      ],
+      "timeout_ms": 900000,
+      "max_output_bytes": 1048576,
+      "network_policy": "unrestricted",
+      "cache_trust": "best_effort",
+      "secret_injections": [],
+      "declared_hosts": []
+    },
+    {
+      "name": "macos-cargo",
+      "platform": "macos",
+      "architecture": null,
+      "domain": "host",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "relative_cwd": ".",
+      "required_capabilities": [
+        "cargo"
+      ],
+      "timeout_ms": 900000,
+      "max_output_bytes": 1048576,
+      "network_policy": "unrestricted",
+      "cache_trust": "best_effort",
+      "secret_injections": [],
+      "declared_hosts": []
+    },
+    {
+      "name": "windows-cargo",
+      "platform": "windows",
+      "architecture": null,
+      "domain": "host",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "relative_cwd": ".",
+      "required_capabilities": [
+        "cargo"
+      ],
+      "timeout_ms": 900000,
+      "max_output_bytes": 1048576,
+      "network_policy": "unrestricted",
+      "cache_trust": "best_effort",
+      "secret_injections": [],
+      "declared_hosts": []
+    }
+  ]
+}

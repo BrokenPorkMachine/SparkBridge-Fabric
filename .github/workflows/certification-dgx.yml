@@ -1,0 +1,43 @@
+name: DGX Spark Certification
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dgx-spark:
+    runs-on: [self-hosted, linux, ARM64, dgx-spark]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Record DGX environment
+        shell: bash
+        run: |
+          mkdir -p certification-evidence
+          {
+            uname -a
+            rustc --version
+            cargo --version
+            nvidia-smi || true
+            ollama --version || true
+          } > certification-evidence/dgx-environment.log 2>&1
+      - name: Generate native/source certification evidence
+        run: python scripts/certification/generate_local_results.py
+      - name: Full source + Rust gates
+        run: ./scripts/validate.sh
+      - name: Build portable certification bundle and triage
+        shell: bash
+        run: |
+          ./scripts/certify.sh --output-dir certification-dgx-run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: certification-dgx-spark
+          path: |
+            certification-results.local.json
+            certification-evidence/
+            certification-dgx-run/

@@ -1,0 +1,50 @@
+[package]
+name = "sparkbridge-server"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+base64.workspace = true
+serde.workspace = true
+reqwest.workspace = true
+futures-util.workspace = true
+bytes.workspace = true
+async-stream.workspace = true
+anyhow.workspace = true
+axum.workspace = true
+axum-server.workspace = true
+clap.workspace = true
+hex.workspace = true
+rcgen.workspace = true
+rusqlite.workspace = true
+rustls.workspace = true
+rustls-pemfile.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+sparkbridge-config = { path = "../../crates/sparkbridge-config" }
+sparkbridge-core = { path = "../../crates/sparkbridge-core" }
+sparkbridge-cas = { path = "../../crates/sparkbridge-cas" }
+sparkbridge-candidate = { path = "../../crates/sparkbridge-candidate" }
+sparkbridge-snapshot = { path = "../../crates/sparkbridge-snapshot" }
+sparkbridge-index = { path = "../../crates/sparkbridge-index" }
+sparkbridge-protocol = { path = "../../crates/sparkbridge-protocol" }
+time.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+uuid.workspace = true
+
+zstd.workspace = true
+
+sparkbridge-task = { path = "../../crates/sparkbridge-task" }
+sparkbridge-agent = { path = "../../crates/sparkbridge-agent" }
+sparkbridge-policy = { path = "../../crates/sparkbridge-policy" }
+sparkbridge-secrets = { path = "../../crates/sparkbridge-secrets" }
+sparkbridge-audit = { path = "../../crates/sparkbridge-audit" }
+
+sparkbridge-cache = { path = "../../crates/sparkbridge-cache" }
+sparkbridge-validation = { path = "../../crates/sparkbridge-validation" }
+
+sparkbridge-integrations = { path = "../../crates/sparkbridge-integrations" }

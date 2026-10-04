@@ -1,0 +1,90 @@
+# Local administrative surface. This MUST remain loopback-only.
+admin_bind = "127.0.0.1:7787"
+
+# Server-authenticated HTTPS enrollment endpoint. New executors use a one-time
+# enrollment token and a locally generated CSR here before they possess a client cert.
+enrollment_bind = "0.0.0.0:7788"
+
+# mTLS fabric endpoint used after enrollment.
+fabric_bind = "0.0.0.0:7789"
+
+# Must be reachable by executors and match a SAN in server.pem.
+public_fabric_url = "https://dgx-spark.example.lan:7789"
+
+# TLS + bearer-authenticated inference gateway. This is the remote surface for
+# coding clients; Ollama itself remains on localhost.
+gateway_bind = "0.0.0.0:7790"
+public_gateway_url = "https://dgx-spark.example.lan:7790"
+gateway_token_path = "/etc/sparkbridge/pki/gateway-token"
+
+# v0.11 external integration surface. MCP, IDE/task APIs, compatibility routes,
+# and the optional operator dashboard use a separate bearer credential so IDE
+# access can be rotated independently from model-gateway access.
+integration_bind = "0.0.0.0:7791"
+public_integration_url = "https://dgx-spark.example.lan:7791"
+integration_token_path = "/etc/sparkbridge/pki/integration-token"
+integration_principal_id = "integration-client"
+dashboard_enabled = true
+
+# Deliberately loopback-only. Server config validation refuses non-loopback Ollama URLs.
+ollama_base_url = "http://127.0.0.1:11434"
+
+# DGX-oriented admission controls. One concurrent request is the safest default for
+# large coding models; raise only after measuring the actual model/workload.
+inference_max_concurrent_requests = 1
+inference_queue_timeout_seconds = 120
+inference_stream_idle_timeout_seconds = 600
+inference_keep_alive = "2h"
+inference_max_request_bytes = 16777216
+
+# Empty means any locally installed Ollama model may be requested. For a dedicated
+# coding appliance, list exact model names here to make model policy explicit.
+inference_allowed_models = []
+
+# Data-boundary policy. The inference boundary declares where model inputs
+# are allowed to leave the control plane. local_only is the safest default for
+# confidential/restricted source. Workspace classifications can be overridden
+# durably through `sparkbridge policy workspaces set`.
+inference_data_boundary = "local_only"
+workspace_classifications = { example = "private" }
+
+# Pending approvals expire automatically. Context scanning redacts common secret
+# shapes before any model request and rejects model-generated candidate content
+# that appears to contain credentials.
+approval_ttl_seconds = 3600
+context_secret_scan_enabled = true
+
+cas_path = "/var/lib/sparkbridge/cas"
+cas_max_object_bytes = 134217728
+
+database_path = "/var/lib/sparkbridge/sparkbridge.db"
+ca_cert_path = "/etc/sparkbridge/pki/ca.pem"
+ca_key_path = "/etc/sparkbridge/pki/ca-key.pem"
+server_cert_path = "/etc/sparkbridge/pki/server.pem"
+server_key_path = "/etc/sparkbridge/pki/server-key.pem"
+
+heartbeat_stale_seconds = 30
+heartbeat_offline_seconds = 120
+
+# Remote action leases are short and renewed while the process is alive. Expired
+# pure actions may be requeued; side-effecting actions become LOST instead.
+action_lease_seconds = 30
+action_max_timeout_seconds = 3600
+action_max_output_bytes = 4194304
+action_cache_max_entries = 10000
+validation_max_targets = 16
+log_filter = "sparkbridge_server=info,tower_http=info"
+
+# deterministic agent runtime
+agent_max_run_steps = 16
+agent_context_max_bytes = 524288
+agent_context_file_max_bytes = 131072
+
+# v0.8 repository intelligence. Indexes are snapshot-keyed and bounded so a
+# pathological repository cannot consume unbounded DGX memory or CAS space.
+intelligence_max_file_bytes = 4194304
+intelligence_ranked_paths = 24
+intelligence_search_limit = 100
+intelligence_max_files = 50000
+intelligence_max_symbols = 100000
+intelligence_max_references = 250000

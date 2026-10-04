@@ -1,0 +1,32 @@
+{
+  "files": [
+    {
+      "name": "certification-results.json",
+      "sha256": "64b8f7b7fbb282ddc8f5df1da4eb30c8b8fd59469b1230218b957f53f1867829",
+      "size_bytes": 13165
+    },
+    {
+      "name": "evidence/certification-results.local-4e886369d7fc/protocol-matrix.log",
+      "sha256": "5838f88cdae7270444441d43425ca90ae3d20b0e14a615a54bbeea7970413177",
+      "size_bytes": 175
+    },
+    {
+      "name": "evidence/certification-results.local-4e886369d7fc/rust.macos-arm64.log",
+      "sha256": "1c08c99294fd31f05e23f2ae93f94200bf69a51d95a7b24175d14094a74837a0",
+      "size_bytes": 11009
+    },
+    {
+      "name": "evidence/certification-results.local-4e886369d7fc/source-audit.log",
+      "sha256": "ae0f57f6d0e3d66203b09502ef6eb35506b6c0486bf44507f5a589809773450b",
+      "size_bytes": 23769
+    },
+    {
+      "name": "inputs/certification-results.local-4e886369d7fc.json",
+      "sha256": "4e886369d7fcd0b96cc3826ff44f38d592b6144fa60c144f0c304283e41f3919",
+      "size_bytes": 13002
+    }
+  ],
+  "format_version": 1,
+  "results_sha256": "64b8f7b7fbb282ddc8f5df1da4eb30c8b8fd59469b1230218b957f53f1867829",
+  "source_revision": "tree-sha256:b7ed5cbc8687932a36ea99884fb50d7a797ee81f0e205a9bb10eba3ae1913743"
+}

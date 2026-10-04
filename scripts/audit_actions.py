@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+import pathlib, sys
+ROOT=pathlib.Path(__file__).resolve().parents[1]
+def text(p): return (ROOT/p).read_text()
+checks=[]
+def check(n,c): checks.append((n,c))
+cargo=text('Cargo.toml'); core=text('crates/sparkbridge-core/src/lib.rs'); protocol=text('crates/sparkbridge-protocol/src/lib.rs')
+execution=text('crates/sparkbridge-execution/src/lib.rs'); diagnostics=text('crates/sparkbridge-diagnostics/src/lib.rs')
+server=text('apps/sparkbridge-server/src/main.rs'); store=text('apps/sparkbridge-server/src/store.rs'); executor=text('apps/sparkbridge-executor/src/main.rs'); cli=text('apps/sparkbridge-cli/src/main.rs'); config=text('crates/sparkbridge-config/src/lib.rs')
+check('workspace version 0.12.0','version = "0.12.0"' in cargo)
+check('protocol is 1.10','PROTOCOL_MINOR: u16 = 10' in protocol)
+check('schema is v9','SCHEMA_VERSION: u32 = 9' in store and 'PRAGMA user_version = 9' in store)
+check('execution and diagnostics crates are members','crates/sparkbridge-execution' in cargo and 'crates/sparkbridge-diagnostics' in cargo)
+check('remote action features negotiate','ITERATION_6_ACTIONS' in core and all(x in core for x in ['RemoteActions','ExecutionDomains','ActionLeases','ActionCancellation','StructuredDiagnostics','ResultOutbox']))
+check('actions use structured argv','pub argv: Vec<String>' in protocol and 'Command::new(&spec.argv[0])' in execution)
+check('executable paths are rejected','action executable must be a command name, not a path' in execution)
+check('executor command allowlist exists','action_allowed_commands' in config and 'is not allowed by executor policy' in execution)
+check('workspace is logical and executor bound','workspace_bindings' in config and 'workspace_id' in protocol and 'has no executor binding' in executor)
+check('relative cwd cannot escape workspace','action cwd may not escape workspace root' in execution and 'canonical_cwd.starts_with' in execution)
+check('capability report is durable','CREATE TABLE IF NOT EXISTS node_capabilities' in store and 'upsert_capabilities' in store)
+check('scheduler matches workspace/domain/platform/arch/tools','matching_domain' in server and 'required_platform' in server and 'required_architecture' in server and 'required_capabilities' in server and 'workspace_ids' in server)
+check('scheduler requires online nodes','NodeStatus::Online' in server and 'no online executor satisfies' in server)
+check('leases are durable','lease_id' in protocol and 'lease_expires_unix_ms' in protocol and 'lease_next_action' in store)
+check('server enforces one active action per executor',"status IN ('leased','running')" in store and 'if active > 0' in store)
+check('pure expired leases requeue only','ActionSideEffect::Pure' in store and 'ActionStatus::Lost' in store)
+check('lease renewal carries cancellation','ActionLeaseRenewResponse' in protocol and 'cancel_requested' in protocol and 'renew_action_lease' in server)
+check('executor cancels on server request','control.cancel_requested' in executor and 'cancellation.cancel()' in executor)
+check('action time is bounded','timeout_ms' in protocol and 'time::sleep(timeout)' in execution)
+check('action output is bounded','max_output_bytes' in protocol and 'read_limited' in execution and 'stdout_truncated' in protocol)
+check('process tree termination has platform handling','taskkill' in execution and 'libc::setsid' in execution and 'libc::kill' in execution and 'start_kill' in execution)
+check('diagnostics normalize unix and MSVC formats','normalize_diagnostics' in diagnostics and 'MSVC/MSBuild' in diagnostics and 'GCC/Clang/Swift/Rust' in diagnostics)
+check('completion results contain diagnostics','pub diagnostics: Vec<Diagnostic>' in protocol)
+check('result outbox is durable','persist_outbox_entry' in executor and 'flush_action_outbox' in executor and 'action_outbox_path' in config)
+check('action completion endpoint is authenticated','complete_action' in server and 'authenticate(&state, id, &headers)' in server)
+check('admin can create/list/show/cancel actions','ActionsCommand' in cli and '/api/v1/admin/actions' in server)
+check('restricted network policy is truthful','ActionNetworkPolicy::None' in execution and 'bubblewrap' in execution and 'dependency_fetch/declared_hosts network policies are not yet enforceable' in execution)
+check('action records persist in SQLite','CREATE TABLE IF NOT EXISTS actions' in store and 'record_json' in store)
+failed=[n for n,c in checks if not c]
+for n,c in checks: print(('PASS' if c else 'FAIL')+': '+n)
+if failed:
+ print(f'\n{len(failed)} action invariant(s) failed',file=sys.stderr); sys.exit(1)
+print(f'\nRemote Actions audit passed: {len(checks)} invariants')

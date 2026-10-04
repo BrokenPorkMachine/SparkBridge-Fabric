@@ -1,0 +1,9 @@
+{
+  "workspace_id": "example-project",
+  "classification": "private",
+  "allowed_principals": ["local-admin"],
+  "allowed_secret_refs": [],
+  "require_approval_for": ["promote"],
+  "required_validation_platforms": ["macos", "windows", "linux"],
+  "updated_unix_ms": 0
+}

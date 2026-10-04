@@ -1,0 +1,6 @@
+PASS protocol 1.8 -> 1.8
+PASS protocol 1.9 -> 1.9
+PASS protocol 1.10 -> 1.10
+PASS protocol 1.99 -> 1.10
+PASS protocol 2.0 -> incompatible
+protocol compatibility matrix passed

@@ -1,0 +1,186 @@
+{
+  "bundle_id": null,
+  "checks": [
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "source.audit",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "run certification CI",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "rust.linux-x86_64",
+      "platform": "linux-x86_64",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "run on DGX Spark",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "rust.linux-aarch64-dgx",
+      "platform": "linux-aarch64",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "run on Apple Silicon",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "rust.macos-arm64",
+      "platform": "macos-arm64",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "run on Windows",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "rust.windows-x86_64",
+      "platform": "windows-x86_64",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "e2e.control-plane",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "e2e.agent-repair",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "fault.server-restart",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "fault.executor-disconnect",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "fault.ollama-restart",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "drill.backup-restore",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "drill.upgrade-rollback",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "compat.protocol-1.9",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "compat.protocol-1.10",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    },
+    {
+      "command": null,
+      "detail": "populate with evidence from the named platform/drill",
+      "evidence": [],
+      "evidence_files": [],
+      "finished_unix_ms": null,
+      "id": "security.audit-chain",
+      "runner": null,
+      "started_unix_ms": null,
+      "status": "skip"
+    }
+  ],
+  "database_schema": 9,
+  "format_version": 1,
+  "generated_unix_ms": 0,
+  "metrics": {},
+  "protocol": "1.10",
+  "provenance": {
+    "environment": {},
+    "inputs": [],
+    "runner": null
+  },
+  "release": "0.12.0",
+  "source_revision": "REPLACE-WITH-SOURCE-REVISION-BEFORE-USE"
+}

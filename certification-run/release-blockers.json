@@ -1,0 +1,62 @@
+{
+  "release": "0.12.0",
+  "source_revision": "tree-sha256:b7ed5cbc8687932a36ea99884fb50d7a797ee81f0e205a9bb10eba3ae1913743",
+  "blocker_count": 11,
+  "blockers": [
+    {
+      "id": "rust.linux-x86_64",
+      "reason": "skip",
+      "detail": "run certification CI"
+    },
+    {
+      "id": "rust.linux-aarch64-dgx",
+      "reason": "skip",
+      "detail": "run on DGX Spark"
+    },
+    {
+      "id": "rust.windows-x86_64",
+      "reason": "skip",
+      "detail": "run on Windows"
+    },
+    {
+      "id": "e2e.control-plane",
+      "reason": "skip",
+      "detail": "populate with evidence from the named platform/drill"
+    },
+    {
+      "id": "e2e.agent-repair",
+      "reason": "skip",
+      "detail": "populate with evidence from the named platform/drill"
+    },
+    {
+      "id": "fault.server-restart",
+      "reason": "skip",
+      "detail": "populate with evidence from the named platform/drill"
+    },
+    {
+      "id": "fault.executor-disconnect",
+      "reason": "skip",
+      "detail": "populate with evidence from the named platform/drill"
+    },
+    {
+      "id": "fault.ollama-restart",
+      "reason": "skip",
+      "detail": "populate with evidence from the named platform/drill"
+    },
+    {
+      "id": "drill.backup-restore",
+      "reason": "skip",
+      "detail": "populate with evidence from the named platform/drill"
+    },
+    {
+      "id": "drill.upgrade-rollback",
+      "reason": "skip",
+      "detail": "populate with evidence from the named platform/drill"
+    },
+    {
+      "id": "security.audit-chain",
+      "reason": "skip",
+      "detail": "populate with evidence from the named platform/drill"
+    }
+  ]
+}
